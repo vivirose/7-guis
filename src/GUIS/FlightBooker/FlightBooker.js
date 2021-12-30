@@ -34,16 +34,16 @@ const FlightBooker = () => {
     }
   }
 
-  function handleDateChange(date) {
-    if (isValidDate(date)) {
+  function handleDateChange(e) {
+    if (isValidDate(e.target.value)) {
       setDisableBooking(false);
-      if (date.target.name === "flightStart") {
-        return setFlightStart(date);
-      }
-      return setFlightEnd(date);
     } else {
       setDisableBooking(true);
     }
+    if (e.target.name === "flightStart") {
+      return setFlightStart(e.target.value);
+    }
+    return setFlightEnd(e.target.value);
   }
 
   return (
@@ -59,13 +59,14 @@ const FlightBooker = () => {
         <input
           value={flightStart}
           name="flightStart"
-          onChange={(e) => handleDateChange(e.target.value)}
+          onChange={handleDateChange}
         ></input>
         <br />
         <input
           disabled={flightType === "oneWay" && true}
           value={flightEnd}
           name="flightEnd"
+          onChange={handleDateChange}
         ></input>
       </form>
       <button onClick={handleBooking} disabled={disableBooking}>Book</button>
