@@ -5,9 +5,8 @@ const FlightBooker = () => {
   const [flightType, setFlightType] = useState("oneWay");
   const [flightStart, setFlightStart] = useState("12.12.2021");
   const [flightEnd, setFlightEnd] = useState("12.12.2021");
-  console.log("flighttype", flightType);
 
-  function handleChange(e) {
+  function handleTypeChange(e) {
     setFlightType(e.target.value);
   }
 
@@ -20,11 +19,15 @@ const FlightBooker = () => {
       );
     }
   }
+
+  //function handleDateChange(){
+
+  //}
   return (
     <>
       <h2>Flight Booker</h2>
       <form>
-        <select onChange={handleChange}>
+        <select onChange={handleTypeChange}>
           <option value="oneWay">One-way Flight</option>
           <option value="return">Return Flight</option>
         </select>
