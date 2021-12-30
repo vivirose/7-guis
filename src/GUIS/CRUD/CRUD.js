@@ -15,7 +15,7 @@ const CRUD = () => {
   const [firstName, setFirstName] = useState(" ");
   const [lastName, setLastName] = useState(" ");
   const [selected, setSelected] = useState();
-  console.log("selected",selected)
+  console.log("selected", selected);
 
   function handleCreateName(e) {
     const newName = {
@@ -53,16 +53,29 @@ const CRUD = () => {
   function handleSelectName(item) {
     setSelected(item);
   }
+
+  function handleSearch(query) {
+    if (query) { 
+      const searchResults = names.filter((item) => {
+        console.log("query", query);
+        return item.lastName.startsWith(query);
+      });
+      setNames(searchResults);
+    } return names
+  }
   return (
     <>
       <h2>CRUD</h2>
       <form>
         <label>Filter prefix: </label>
-        <input type="text"></input>
+        <input
+          type="text"
+          onChange={(e) => handleSearch(e.target.value)}
+        ></input>
       </form>
       <ul>
         {names.map((item) => (
-          <li key={item.id} onClick={()=>handleSelectName(item)}>
+          <li key={item.id} onClick={() => handleSelectName(item)}>
             {item.firstName}, {item.lastName}
           </li>
         ))}
@@ -86,8 +99,8 @@ const CRUD = () => {
         ></input>
       </form>
       <button onClick={handleCreateName}>Create</button>
-      <button onClick={()=>handleUpdateName(selected)}>Update</button>
-      <button onClick={()=>handleDeleteName(selected.id)}>Delete</button>
+      <button onClick={() => handleUpdateName(selected)}>Update</button>
+      <button onClick={() => handleDeleteName(selected.id)}>Delete</button>
     </>
   );
 };
