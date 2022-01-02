@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
+import BoxLayout from "../../components/BoxLayout/BoxLayout";
+import './FlightBooker.css'
 
 function isValidDate(dateString) {
   if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) return false;
@@ -47,8 +49,8 @@ const FlightBooker = () => {
   }
 
   return (
-    <>
-      <h2>Flight Booker</h2>
+    <BoxLayout title={"FLIGHT BOOKER"} width="350px" >
+      <div className="flightBooker">
       <form>
         <select onChange={handleTypeChange}>
           <option value="oneWay">One-way Flight</option>
@@ -60,6 +62,7 @@ const FlightBooker = () => {
           value={flightStart}
           name="flightStart"
           onChange={handleDateChange}
+          style={{backgroundColor: disableBooking && "#EE4C73"}}
         ></input>
         <br />
         <input
@@ -67,10 +70,12 @@ const FlightBooker = () => {
           value={flightEnd}
           name="flightEnd"
           onChange={handleDateChange}
+          style={{backgroundColor: disableBooking && "#EE4C73"}}
         ></input>
       </form>
       <button onClick={handleBooking} disabled={disableBooking}>Book</button>
-    </>
+      </div>
+      </BoxLayout>
   );
 };
 

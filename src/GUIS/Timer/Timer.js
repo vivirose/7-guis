@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react/cjs/react.development";
+import BoxLayout from "../../components/BoxLayout/BoxLayout";
 import "./Timer.css";
 
 function useInterval(callback, delay) {
@@ -14,9 +15,6 @@ function useInterval(callback, delay) {
   useEffect(() => {
     function tick() {
       savedCallback.current();
-      //   if (savedCallback.current() > 99){
-      //     clearInterval()
-      //   };
     }
     if (delay !== null) {
       let id = setInterval(tick, delay);
@@ -26,52 +24,54 @@ function useInterval(callback, delay) {
 }
 const Timer = () => {
   const [percentageDone, setPercentageDone] = useState(0);
+  const [timeElapsed, setTimeElapsed] = useState(0);
   const [isRunning, setIsRunning] = useState(true);
-  console.log(percentageDone);
+  const [progressValue, setProgressValue] = React.useState(10);
+  const [allowMove, setAllowMove] = React.useState(false);
+
+  const onMouseMove = (e) => {
+    console.log("click", e);
+    if (!allowMove) return;
+    const position = e.clientX;
+    if (position === progressValue) return;
+    setProgressValue(position);
+  };
+
   function handleReset() {
     setPercentageDone(0);
     setIsRunning(true);
+    setTimeElapsed(0);
   }
   function progress(params) {
     if (percentageDone < 100) {
       setPercentageDone((prev) => prev + 1);
+      setTimeElapsed((prev) => prev + 0.3);
     } else {
       setIsRunning(false);
-      console.log("after100");
     }
   }
-  useInterval(progress, isRunning ? 100 : null);
-
-  //   useEffect(() => {
-  //     const timer = window.setInterval(() => {
-  //         debugger;
-  //       if (percentageDone < 10) {
-  //         setPercentageDone((prev) => prev + 1);
-  //       }
-  //     }, 100);
-  //     return () => {
-  //       window.clearInterval(timer);
-  //     };
-  //   }, []);
+  useInterval(progress, isRunning ? 300 : null);
 
   return (
-    <>
-      <h2>Timer</h2>
-      <p>Elapsed time: </p>
-      <div className="progress_bar">
-        <div
-          className="progress"
-          style={{
-            width: `${percentageDone}%`,
-          }}
-        ></div>
+    <BoxLayout title={"TIMER"} width="200px">
+      <div>
+        <label htmlFor="timer">Elapsed time: </label>
+        <progress id="timer" value={percentageDone} max="100">
+          {percentageDone}
+        </progress>
+        <p>{timeElapsed.toFixed(1)} s</p>
+        <label>Set Duration:</label>
+        <progress
+          value={progressValue}
+          max={100}
+          onMouseMove={onMouseMove}
+          onMouseDown={() => setAllowMove(true)}
+          onMouseUp={() => setAllowMove(false)}
+        />
+        <br></br>
+        <button onClick={handleReset}>Reset Timer</button>
       </div>
-      <p>Duration: </p>
-      <div className="progress_bar">
-        <div className="progress"></div>
-      </div>
-      <button onClick={handleReset}>Reset Timer</button>
-    </>
+    </BoxLayout>
   );
 };
 

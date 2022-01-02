@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BoxLayout from "../../components/BoxLayout/BoxLayout";
 
 const TempConverter = () => {
   const [celsius, setCelsius] = useState(" ");
@@ -15,25 +16,28 @@ const TempConverter = () => {
   }
 
   return (
-    <>
-      <h2>Temperature Converter</h2>
-      <form>
-        <input
-          type="number"
-          id="celsius"
-          value={celsius}
-          onChange={(e) => toFahrenheit(e.target.value)}
-        ></input>
-        <label htmlFor="celsius">Celsius =</label>
-        <input
-          type="number"
-          id="fahrenheit"
-          value={fahrenheit}
-          onChange={(e) => toCelsius(e.target.value)}
-        ></input>
-        <label htmlFor="fahrenheit">Fahrenheit</label>
+    <BoxLayout title={"TEMPERATURE CONVERTER"} height="100px" width="500px">
+      <form className="temperature_form">
+        <label htmlFor="celsius">
+          <input
+            type="number"
+            id="celsius"
+            value={celsius}
+            onChange={(e) => toFahrenheit(e.target.value)}
+          ></input>
+          Celsius =
+        </label>
+        <label htmlFor="fahrenheit">
+          <input
+            type="number"
+            id="fahrenheit"
+            value={fahrenheit}
+            onChange={(e) => toCelsius(e.target.value)}
+          ></input>
+          Fahrenheit
+        </label>
       </form>
-    </>
+    </BoxLayout>
   );
 };
 
