@@ -1,6 +1,14 @@
+:root {
+  --primary-color: #463f3a;
+  --gray1: #8a817c;
+  --gray2: #e5e5e5;
+  --gray3: #f4f3ee;
+  --pink: #e0afa0;
+}
+
 .App {
   text-align: center;
-  background-color: #463f3a;
+  background-color: var(--primary-color);
   height: 100%;
   max-width: 100%;
   display: flex;
@@ -15,33 +23,41 @@
 .App_header {
   font-size: 69px;
   line-height: 94px;
-  color: #f4f3ee;
+  color: var(--gray3);
 }
 
 button {
-  background-color: #8a817c;
+  background-color: var(--gray1);
   height: 30px;
   width: 110px;
   border-radius: 10px;
-  border: 2px solid #e0afa0;
-  color: #e0afa0;
+  border: 2px solid var(--pink);
+  color: var(--pink);
   font-size: 16px;
 }
 
 button:hover {
-  background-color: #e0afa0;
-  color: #463f3a;
+  background-color: var(--pink);
+  color: var(--primary-color);
   cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.33;
 }
 
 input {
   width: 139px;
   height: 40px;
-  background: #e5e5e5;
-  border: 2px solid #e0afa0;
+  background: var(--gray2);
+  border: 2px solid var(--pink);
   box-sizing: border-box;
   border-radius: 10px;
-  color: #463f3a;
+  color: var(--primary-color);
   padding: 10px;
   margin: 5px;
+}
+
+input:disabled {
+  opacity: 0.33;
 }

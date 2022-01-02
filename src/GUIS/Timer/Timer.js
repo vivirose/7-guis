@@ -26,16 +26,9 @@ const Timer = () => {
   const [percentageDone, setPercentageDone] = useState(0);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isRunning, setIsRunning] = useState(true);
-  const [progressValue, setProgressValue] = React.useState(10);
-  const [allowMove, setAllowMove] = React.useState(false);
-
-  const onMouseMove = (e) => {
-    console.log("click", e);
-    if (!allowMove) return;
-    const position = e.clientX;
-    if (position === progressValue) return;
-    setProgressValue(position);
-  };
+  const [duration, setDuration] = useState(30);
+  console.log("duration", duration)
+  console.log("percentageDOne", percentageDone)
 
   function handleReset() {
     setPercentageDone(0);
@@ -43,31 +36,44 @@ const Timer = () => {
     setTimeElapsed(0);
   }
   function progress(params) {
-    if (percentageDone < 100) {
+    if (percentageDone < duration) {
       setPercentageDone((prev) => prev + 1);
-      setTimeElapsed((prev) => prev + 0.3);
+      setTimeElapsed((prev) => prev + 1);
     } else {
       setIsRunning(false);
     }
   }
-  useInterval(progress, isRunning ? 300 : null);
+
+  function handleDurationChange(e) {
+    setDuration(e.target.value);
+  };
+  
+  useInterval(progress, isRunning ? 1000 : null);
+
 
   return (
     <BoxLayout title={"TIMER"} width="200px">
       <div>
         <label htmlFor="timer">Elapsed time: </label>
-        <progress id="timer" value={percentageDone} max="100">
+        <progress id="timer" value={percentageDone} max={duration}>
           {percentageDone}
         </progress>
-        <p>{timeElapsed.toFixed(1)} s</p>
+        <p>{timeElapsed} s</p>
+        <div>
         <label>Set Duration:</label>
-        <progress
-          value={progressValue}
-          max={100}
-          onMouseMove={onMouseMove}
-          onMouseDown={() => setAllowMove(true)}
-          onMouseUp={() => setAllowMove(false)}
-        />
+          <input
+            type="range"
+            id="duration"
+            name="duration"
+            min="0"
+            max="30"
+            value={duration}
+            step="1"
+            style={{padding: 0, border: 0}}
+            onChange={(e)=>{handleDurationChange(e)}}
+            ></input>
+        </div>
+        <p>{duration}</p>
         <br></br>
         <button onClick={handleReset}>Reset Timer</button>
       </div>
@@ -76,3 +82,5 @@ const Timer = () => {
 };
 
 export default Timer;
+
+

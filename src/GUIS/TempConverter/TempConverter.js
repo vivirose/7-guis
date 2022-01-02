@@ -16,7 +16,7 @@ const TempConverter = () => {
   }
 
   return (
-    <BoxLayout title={"TEMPERATURE CONVERTER"} height="100px" width="500px">
+    <BoxLayout title={"TEMPERATURE CONVERTER"} width="500px">
       <form className="temperature_form">
         <label htmlFor="celsius">
           <input

@@ -4,7 +4,7 @@
 }
 
 .names_list{
-    background-color: #e5e5e5;
+    background-color: var(--gray2);
     width:40%;
     text-align: left;
     border-radius: 4px;
@@ -18,8 +18,8 @@ ul{
      padding-left: 10px;
  }
 li:hover{
-    background-color: #e0afa0;
-    color: #e5e5e5;
+    background-color: var(--pink);
+    color: var(--gray2);
     cursor: pointer;
 }
 

@@ -17,9 +17,9 @@ const CRUD = () => {
   const [namesFiltered, setNamesFiltered] = useState([]);
   const [firstName, setFirstName] = useState(" ");
   const [lastName, setLastName] = useState(" ");
-  const [selected, setSelected] = useState();
+  const [selectedId, setSelectedId] = useState();
 
-  console.log("selected", selected)
+
 
   function handleCreateName(e) {
     const newName = {
@@ -43,22 +43,23 @@ const CRUD = () => {
       return item.id !== id;
     });
     setNames(namesUpdated);
+    clearForm();
   }
 
   function getNameList() {
     const array = namesFiltered.length ? namesFiltered : names;
     return array.map((item) => (
-      <li key={item.id} onClick={() => handleSelectName(item)}>
+      <li key={item.id} onClick={() => handleSelectName(item)} style={{backgroundColor: (selectedId === item.id) && "var(--pink)"}}>
         {item.firstName} {item.lastName}
       </li>
     ));
   }
 
-  function handleUpdateName(name) {
+  function handleUpdateName(id) {
     const namesUpdated = names.map((item) => {
-      if (item.id === name?.id) {
+      if (item.id === id) {
         return {
-          id: name.id,
+          id,
           firstName,
           lastName,
         };
@@ -66,11 +67,20 @@ const CRUD = () => {
       return item;
     });
     setNames(namesUpdated);
-    setSelected();
+    clearForm()
+    
   }
 
-  function handleSelectName(item) {
-    setSelected(item);
+  function handleSelectName(name) {
+    setSelectedId(name.id);
+    setFirstName(name.firstName);
+    setLastName(name.lastName);
+  }
+
+  function clearForm(){
+    setFirstName('');
+    setLastName('');
+    setSelectedId('');
   }
 
   function handleSearch(e) {
@@ -100,7 +110,7 @@ const CRUD = () => {
             <label htmlFor="name">Name: </label>
             <br></br>
             <input
-              value={selected?.firstName || " "}
+              value={firstName}
               type="text"
               id="name"
               name="firstName"
@@ -110,7 +120,7 @@ const CRUD = () => {
             <label htmlFor="lastName">Surname: </label>
             <br></br>
             <input
-              value={selected?.lastName || " "}
+              value={lastName}
               type="text"
               id="lastName"
               name="lastName"
@@ -120,12 +130,12 @@ const CRUD = () => {
         </div>
       </div>
       <div className="buttons">
-        <button onClick={handleCreateName}>Create</button>
-        <button onClick={() => handleUpdateName(selected)}>Update</button>
-        <button onClick={() => handleDeleteName(selected?.id)}>Delete</button>
+        <button disabled={Boolean(selectedId)} onClick={handleCreateName}>Create</button>
+        <button onClick={() => handleUpdateName(selectedId)}>Update</button>
+        <button onClick={() => handleDeleteName(selectedId)}>Delete</button>
       </div>
     </BoxLayout>
   );
-};
+}
 
-export default CRUD;
+export default CRUD
