@@ -1,5 +1,5 @@
-.temperature_form{
-    display: flex;
-    column-gap: 5px;
-    margin-bottom: 20px;
+.temperature_form {
+  display: flex;
+  column-gap: 5px;
+  margin-bottom: 20px;
 }

@@ -1,31 +1,30 @@
-.BoxLayout{
-    background-color: #F4F3EE;
-    position: relative;
-    border-radius: 4px;
-    color: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    row-gap: 10px;
-    padding-bottom: 10px;
-    max-width: 100%;
+.BoxLayout {
+  background-color: #f4f3ee;
+  position: relative;
+  border-radius: 4px;
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 10px;
+  padding-bottom: 10px;
+  max-width: 100%;
 }
 
-.BoxLayout_header{
-    background-color: #8A817C;
-    width: 100%;
-    position: relative;
-    top: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+.BoxLayout_header {
+  background-color: #8a817c;
+  width: 100%;
+  position: relative;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
-.BoxLayout_title{
-    padding: 0;
-    color:#E5E5E5;
-    margin: 0;
-
+.BoxLayout_title {
+  padding: 0;
+  color: #e5e5e5;
+  margin: 0;
 }

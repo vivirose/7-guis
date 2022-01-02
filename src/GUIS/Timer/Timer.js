@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react/cjs/react.development";
 import BoxLayout from "../../components/BoxLayout/BoxLayout";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 import "./Timer.css";
 
 function useInterval(callback, delay) {
@@ -22,13 +24,12 @@ function useInterval(callback, delay) {
     }
   }, [delay]);
 }
+
 const Timer = () => {
   const [percentageDone, setPercentageDone] = useState(0);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isRunning, setIsRunning] = useState(true);
   const [duration, setDuration] = useState(30);
-  console.log("duration", duration)
-  console.log("percentageDOne", percentageDone)
 
   function handleReset() {
     setPercentageDone(0);
@@ -46,10 +47,9 @@ const Timer = () => {
 
   function handleDurationChange(e) {
     setDuration(e.target.value);
-  };
-  
-  useInterval(progress, isRunning ? 1000 : null);
+  }
 
+  useInterval(progress, isRunning ? 1000 : null);
 
   return (
     <BoxLayout title={"TIMER"} width="200px">
@@ -60,8 +60,8 @@ const Timer = () => {
         </progress>
         <p>{timeElapsed} s</p>
         <div>
-        <label>Set Duration:</label>
-          <input
+          <label>Set Duration:</label>
+          <Input
             type="range"
             id="duration"
             name="duration"
@@ -69,18 +69,18 @@ const Timer = () => {
             max="30"
             value={duration}
             step="1"
-            style={{padding: 0, border: 0}}
-            onChange={(e)=>{handleDurationChange(e)}}
-            ></input>
+            style={{ padding: 0, border: 0 }}
+            onChange={(e) => {
+              handleDurationChange(e);
+            }}
+          ></Input>
         </div>
         <p>{duration}</p>
         <br></br>
-        <button onClick={handleReset}>Reset Timer</button>
+        <Button onClick={handleReset} text={"RESET TIMER"} />
       </div>
     </BoxLayout>
   );
 };
 
 export default Timer;
-
-

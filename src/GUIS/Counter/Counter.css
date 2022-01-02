@@ -1,11 +1,11 @@
-.counter{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.counter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .counter > h2 {
-    margin: 0;
-    font-size: 38px;
-    color: var(--primary-color);
+  margin: 0;
+  font-size: 38px;
+  color: var(--primary-color);
 }

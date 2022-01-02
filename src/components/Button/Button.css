@@ -1,0 +1,21 @@
+button {
+  background-color: var(--gray1);
+  height: 30px;
+  /* //width: 110px; */
+  border-radius: 10px;
+  border: 2px solid var(--pink);
+  color: var(--pink);
+  font-size: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+button:hover {
+  background-color: var(--pink);
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.33;
+}

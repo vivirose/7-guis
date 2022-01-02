@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BoxLayout from "../../components/BoxLayout/BoxLayout";
-import './Counter.css'
+import Button from "../../components/Button/Button";
+import "./Counter.css";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -10,8 +11,8 @@ const Counter = () => {
   return (
     <BoxLayout title={"COUNTER"} width="350px">
       <div className="counter">
-      <h2>{count}</h2>
-      <button onClick={handleClick}>COUNT</button>
+        <h2>{count}</h2>
+        <Button onClick={handleClick} text={"COUNT"} />
       </div>
     </BoxLayout>
   );

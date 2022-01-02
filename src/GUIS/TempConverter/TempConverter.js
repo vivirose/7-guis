@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BoxLayout from "../../components/BoxLayout/BoxLayout";
+import Input from "../../components/Input/Input";
 
 const TempConverter = () => {
   const [celsius, setCelsius] = useState(" ");
@@ -19,21 +20,21 @@ const TempConverter = () => {
     <BoxLayout title={"TEMPERATURE CONVERTER"} width="500px">
       <form className="temperature_form">
         <label htmlFor="celsius">
-          <input
+          <Input
             type="number"
             id="celsius"
             value={celsius}
             onChange={(e) => toFahrenheit(e.target.value)}
-          ></input>
+          ></Input>
           Celsius =
         </label>
         <label htmlFor="fahrenheit">
-          <input
+          <Input
             type="number"
             id="fahrenheit"
             value={fahrenheit}
             onChange={(e) => toCelsius(e.target.value)}
-          ></input>
+          ></Input>
           Fahrenheit
         </label>
       </form>

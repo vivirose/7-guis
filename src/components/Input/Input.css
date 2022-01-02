@@ -1,0 +1,16 @@
+.input {
+    width: 139px;
+    height: 40px;
+    background: var(--gray2);
+    border: 2px solid var(--pink);
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: var(--primary-color);
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .input:disabled {
+    opacity: 0.33;
+  }
+  

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
 import BoxLayout from "../../components/BoxLayout/BoxLayout";
-import './FlightBooker.css'
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
+import "./FlightBooker.css";
 
 function isValidDate(dateString) {
   if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) return false;
@@ -49,33 +51,33 @@ const FlightBooker = () => {
   }
 
   return (
-    <BoxLayout title={"FLIGHT BOOKER"} width="350px" >
+    <BoxLayout title={"FLIGHT BOOKER"} width="350px">
       <div className="flightBooker">
-      <form>
-        <select onChange={handleTypeChange}>
-          <option value="oneWay">One-way Flight</option>
-          <option value="return">Return Flight</option>
-        </select>
-      </form>
-      <form>
-        <input
-          value={flightStart}
-          name="flightStart"
-          onChange={handleDateChange}
-          style={{backgroundColor: disableBooking && "#EE4C73"}}
-        ></input>
-        <br />
-        <input
-          disabled={flightType === "oneWay" && true}
-          value={flightEnd}
-          name="flightEnd"
-          onChange={handleDateChange}
-          style={{backgroundColor: disableBooking && "#EE4C73"}}
-        ></input>
-      </form>
-      <button onClick={handleBooking} disabled={disableBooking}>Book</button>
+        <form>
+          <select onChange={handleTypeChange}>
+            <option value="oneWay">One-way Flight</option>
+            <option value="return">Return Flight</option>
+          </select>
+        </form>
+        <form>
+          <Input
+            value={flightStart}
+            name="flightStart"
+            onChange={handleDateChange}
+            style={{ backgroundColor: disableBooking && "#EE4C73" }}
+          ></Input>
+          <br />
+          <Input
+            disabled={flightType === "oneWay" && true}
+            value={flightEnd}
+            name="flightEnd"
+            onChange={handleDateChange}
+            style={{ backgroundColor: disableBooking && "#EE4C73" }}
+          ></Input>
+        </form>
+        <Button onClick={handleBooking} disabled={disableBooking} text={"BOOK"} />
       </div>
-      </BoxLayout>
+    </BoxLayout>
   );
 };
 

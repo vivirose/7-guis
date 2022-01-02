@@ -1,15 +1,18 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
 import BoxLayout from "../../components/BoxLayout/BoxLayout";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Input/Input";
 import "./CRUD.css";
 
 const initialNamesState = [
   {
     id: 1,
     firstName: "Vivien",
-    lastName: "Test",
+    lastName: "Marcolin",
   },
-  { id: 2, firstName: "Carlos", lastName: "Test" },
+  { id: 2, firstName: "John", lastName: "Smith" },
+  { id: 3, firstName: "Jane", lastName: "Doe" },
 ];
 
 const CRUD = () => {
@@ -19,16 +22,14 @@ const CRUD = () => {
   const [lastName, setLastName] = useState(" ");
   const [selectedId, setSelectedId] = useState();
 
-
-
   function handleCreateName(e) {
     const newName = {
       id: new Date().getTime(),
       firstName: firstName,
       lastName: lastName,
     };
-    const names2 = [...names, newName];
-    setNames(names2);
+    const namesUpdated = [...names, newName];
+    setNames(namesUpdated);
   }
 
   function handleChangeName(e) {
@@ -37,7 +38,7 @@ const CRUD = () => {
     }
     return setLastName(e.target.value);
   }
-  
+
   function handleDeleteName(id) {
     const namesUpdated = names.filter((item) => {
       return item.id !== id;
@@ -49,7 +50,11 @@ const CRUD = () => {
   function getNameList() {
     const array = namesFiltered.length ? namesFiltered : names;
     return array.map((item) => (
-      <li key={item.id} onClick={() => handleSelectName(item)} style={{backgroundColor: (selectedId === item.id) && "var(--pink)"}}>
+      <li
+        key={item.id}
+        onClick={() => handleSelectName(item)}
+        style={{ backgroundColor: selectedId === item.id && "var(--pink)" }}
+      >
         {item.firstName} {item.lastName}
       </li>
     ));
@@ -67,8 +72,7 @@ const CRUD = () => {
       return item;
     });
     setNames(namesUpdated);
-    clearForm()
-    
+    clearForm();
   }
 
   function handleSelectName(name) {
@@ -77,17 +81,16 @@ const CRUD = () => {
     setLastName(name.lastName);
   }
 
-  function clearForm(){
-    setFirstName('');
-    setLastName('');
-    setSelectedId('');
+  function clearForm() {
+    setFirstName("");
+    setLastName("");
+    setSelectedId("");
   }
 
   function handleSearch(e) {
     const query = e.target.value.toLowerCase();
     if (query) {
       const searchResults = names.filter((item) => {
-        console.log("query", query);
         return item.lastName.toLowerCase().startsWith(query);
       });
       setNamesFiltered(searchResults);
@@ -99,7 +102,7 @@ const CRUD = () => {
     <BoxLayout title="CRUD" width="400px">
       <form className="search_form">
         <label>Filter prefix: </label>
-        <input type="search" onChange={(e) => handleSearch(e)}></input>
+        <Input type="search" onChange={(e) => handleSearch(e)}></Input>
       </form>
       <div className="names">
         <div className="names_list">
@@ -109,33 +112,33 @@ const CRUD = () => {
           <form>
             <label htmlFor="name">Name: </label>
             <br></br>
-            <input
+            <Input
               value={firstName}
               type="text"
               id="name"
               name="firstName"
               onChange={(e) => handleChangeName(e)}
-            ></input>
+            ></Input>
             <br></br>
             <label htmlFor="lastName">Surname: </label>
             <br></br>
-            <input
+            <Input
               value={lastName}
               type="text"
               id="lastName"
               name="lastName"
               onChange={(e) => handleChangeName(e)}
-            ></input>
+            ></Input>
           </form>
         </div>
       </div>
       <div className="buttons">
-        <button disabled={Boolean(selectedId)} onClick={handleCreateName}>Create</button>
-        <button onClick={() => handleUpdateName(selectedId)}>Update</button>
-        <button onClick={() => handleDeleteName(selectedId)}>Delete</button>
+        <Button disabled={Boolean(selectedId)} onClick={handleCreateName} text={"CREATE"} />
+        <Button onClick={() => handleUpdateName(selectedId)} text={"UPDATE"} />
+        <Button onClick={() => handleDeleteName(selectedId)} text={"DELETE"} />
       </div>
     </BoxLayout>
   );
-}
+};
 
-export default CRUD
+export default CRUD;
