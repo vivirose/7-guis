@@ -51,7 +51,7 @@ const FlightBooker = () => {
   }
 
   return (
-    <BoxLayout title={"FLIGHT BOOKER"} width="350px">
+    <BoxLayout title="FLIGHT BOOKER" width="350px">
       <div className="flightBooker">
         <form>
           <select onChange={handleTypeChange}>

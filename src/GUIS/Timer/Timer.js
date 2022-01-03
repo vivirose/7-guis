@@ -52,7 +52,7 @@ const Timer = () => {
   useInterval(progress, isRunning ? 1000 : null);
 
   return (
-    <BoxLayout title={"TIMER"} width="200px">
+    <BoxLayout title="TIMER" width="200px">
       <div>
         <label htmlFor="timer">Elapsed time: </label>
         <progress id="timer" value={percentageDone} max={duration}>
@@ -69,7 +69,6 @@ const Timer = () => {
             max="30"
             value={duration}
             step="1"
-            style={{ padding: 0, border: 0 }}
             onChange={(e) => {
               handleDurationChange(e);
             }}

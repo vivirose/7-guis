@@ -9,7 +9,7 @@ const Counter = () => {
     setCount(count + 1);
   }
   return (
-    <BoxLayout title={"COUNTER"} width="350px">
+    <BoxLayout title="COUNTER" width="350px">
       <div className="counter">
         <h2>{count}</h2>
         <Button onClick={handleClick} text="COUNT" />

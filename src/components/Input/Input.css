@@ -17,3 +17,8 @@
   .input-invalid{
     background-color: var(--error);
   }
+
+  .input-range{
+    padding: 0;
+    border: 0;
+  }

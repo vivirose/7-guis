@@ -57,6 +57,7 @@ const CRUD = () => {
     const array = namesFiltered.length ? namesFiltered : names;
     return array.map((item) => (
       <li
+        className="names-list_element"
         key={item.id}
         onClick={() => handleSelectName(item)}
         style={{ backgroundColor: selectedId === item.id && "var(--pink)" }}

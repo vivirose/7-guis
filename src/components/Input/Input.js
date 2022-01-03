@@ -9,11 +9,15 @@ const Input = ({
   name,
   min,
   max,
-  style,
   disabled,
   invalid
 }) => {
-  const className = `input ${invalid ? "input-invalid": ""}`
+  let className = "input"
+  //when error in input, change background color
+  className += invalid ? " input-invalid": "";
+  //by default, input has paading, so it has to be removed when type is range
+  className += (type === "range") ? " input-range" : "";
+
   return (
     <input
       type={type}
@@ -24,7 +28,6 @@ const Input = ({
       className={className}
       min={min}
       max={max}
-      style={style}
       disabled={disabled}
 
     />
