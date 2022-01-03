@@ -53,20 +53,6 @@ const CRUD = () => {
     clearForm();
   }
 
-  function getNameList() {
-    const array = namesFiltered.length ? namesFiltered : names;
-    return array.map((item) => (
-      <li
-        className="names-list_element"
-        key={item.id}
-        onClick={() => handleSelectName(item)}
-        style={{ backgroundColor: selectedId === item.id && "var(--pink)" }}
-      >
-        {item.firstName} {item.lastName}
-      </li>
-    ));
-  }
-
   function handleUpdateName(id) {
     const namesUpdated = names.map((item) => {
       if (item.id === id) {
@@ -87,13 +73,7 @@ const CRUD = () => {
     setFirstName(name.firstName);
     setLastName(name.lastName);
   }
-
-  function clearForm() {
-    setFirstName("");
-    setLastName("");
-    setSelectedId("");
-  }
-
+  
   function handleSearch(e) {
     const query = e.target.value.toLowerCase();
     if (query) {
@@ -105,6 +85,27 @@ const CRUD = () => {
       setNamesFiltered([]);
     }
   }
+  
+  function getNameList() {
+    const array = namesFiltered.length ? namesFiltered : names;
+    return array.map((item) => (
+      <li
+        className="names-list_element"
+        key={item.id}
+        onClick={() => handleSelectName(item)}
+        style={{ backgroundColor: selectedId === item.id && "var(--pink)" }}
+      >
+        {item.firstName} {item.lastName}
+      </li>
+    ));
+  }
+
+  function clearForm() {
+    setFirstName("");
+    setLastName("");
+    setSelectedId("");
+  }
+
   return (
     <BoxLayout title="CRUD" width="400px">
       <form className="search_form">

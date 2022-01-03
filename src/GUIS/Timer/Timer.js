@@ -36,7 +36,7 @@ const Timer = () => {
     setIsRunning(true);
     setTimeElapsed(0);
   }
-  function progress(params) {
+  function progress() {
     if (percentageDone < duration) {
       setPercentageDone((prev) => prev + 1);
       setTimeElapsed((prev) => prev + 1);
