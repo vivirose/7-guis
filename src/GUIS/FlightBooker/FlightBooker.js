@@ -22,7 +22,7 @@ const FlightBooker = () => {
   const [flightType, setFlightType] = useState("oneWay");
   const [flightStart, setFlightStart] = useState("12/12/2021");
   const [flightEnd, setFlightEnd] = useState("12/12/2021");
-  const [disableBooking, setDisableBooking] = useState(false);
+  const [invalidBooking, setInvalidBooking] = useState(false);
 
   function handleTypeChange(e) {
     setFlightType(e.target.value);
@@ -40,9 +40,9 @@ const FlightBooker = () => {
 
   function handleDateChange(e) {
     if (isValidDate(e.target.value)) {
-      setDisableBooking(false);
+      setInvalidBooking(false);
     } else {
-      setDisableBooking(true);
+      setInvalidBooking(true);
     }
     if (e.target.name === "flightStart") {
       return setFlightStart(e.target.value);
@@ -64,18 +64,18 @@ const FlightBooker = () => {
             value={flightStart}
             name="flightStart"
             onChange={handleDateChange}
-            style={{ backgroundColor: disableBooking && "#EE4C73" }}
+            invalid={invalidBooking}
           />
           <br />
           <Input
-            disabled={flightType === "oneWay" && true}
+            disabled={Boolean(flightType === "oneWay")}
             value={flightEnd}
             name="flightEnd"
             onChange={handleDateChange}
-            style={{ backgroundColor: disableBooking && "#EE4C73" }}
+            invalid={invalidBooking}
           />
         </form>
-        <Button onClick={handleBooking} disabled={disableBooking} text="BOOK" />
+        <Button onClick={handleBooking} disabled={invalidBooking} text="BOOK" />
       </div>
     </BoxLayout>
   );

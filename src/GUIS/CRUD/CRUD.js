@@ -11,8 +11,14 @@ const initialNamesState = [
     firstName: "Vivien",
     lastName: "Marcolin",
   },
-  { id: 2, firstName: "John", lastName: "Smith" },
-  { id: 3, firstName: "Jane", lastName: "Doe" },
+  { id: 2, 
+    firstName: "John", 
+    lastName: "Smith" 
+  },
+  { id: 3, 
+    firstName: "Jane", 
+    lastName: "Doe" 
+  },
 ];
 
 const CRUD = () => {
@@ -102,7 +108,7 @@ const CRUD = () => {
     <BoxLayout title="CRUD" width="400px">
       <form className="search_form">
         <label>Filter prefix: </label>
-        <Input type="search" onChange={(e) => handleSearch(e)}></Input>
+        <Input type="search" onChange={(e) => handleSearch(e)} />
       </form>
       <div className="names">
         <div className="names_list">

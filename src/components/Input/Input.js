@@ -11,7 +11,9 @@ const Input = ({
   max,
   style,
   disabled,
+  invalid
 }) => {
+  const className = `input ${invalid ? "input-invalid": ""}`
   return (
     <input
       type={type}
@@ -19,11 +21,12 @@ const Input = ({
       onChange={onChange}
       id={id}
       name={name}
-      className="input"
+      className={className}
       min={min}
       max={max}
       style={style}
       disabled={disabled}
+
     />
   );
 };
