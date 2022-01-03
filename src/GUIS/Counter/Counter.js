@@ -12,7 +12,7 @@ const Counter = () => {
     <BoxLayout title={"COUNTER"} width="350px">
       <div className="counter">
         <h2>{count}</h2>
-        <Button onClick={handleClick} text={"COUNT"} />
+        <Button onClick={handleClick} text="COUNT" />
       </div>
     </BoxLayout>
   );

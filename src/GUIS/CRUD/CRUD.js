@@ -111,31 +111,41 @@ const CRUD = () => {
         <div>
           <form>
             <label htmlFor="name">Name: </label>
-            <br></br>
+            <br/>
             <Input
               value={firstName}
               type="text"
               id="name"
               name="firstName"
               onChange={(e) => handleChangeName(e)}
-            ></Input>
-            <br></br>
+            />
+            <br/>
             <label htmlFor="lastName">Surname: </label>
-            <br></br>
+            <br/>
             <Input
               value={lastName}
               type="text"
               id="lastName"
               name="lastName"
               onChange={(e) => handleChangeName(e)}
-            ></Input>
+            />
           </form>
         </div>
       </div>
       <div className="buttons">
-        <Button disabled={Boolean(selectedId)} onClick={handleCreateName} text={"CREATE"} />
-        <Button onClick={() => handleUpdateName(selectedId)} text={"UPDATE"} />
-        <Button onClick={() => handleDeleteName(selectedId)} text={"DELETE"} />
+        <Button
+          disabled={Boolean(selectedId)}
+          onClick={handleCreateName}
+          text="CREATE"
+        />
+        <Button 
+          onClick={() => handleUpdateName(selectedId)} 
+          text="UPDATE" 
+        />
+        <Button 
+          onClick={() => handleDeleteName(selectedId)} 
+          text="DELETE" 
+        />
       </div>
     </BoxLayout>
   );

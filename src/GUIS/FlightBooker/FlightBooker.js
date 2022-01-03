@@ -65,7 +65,7 @@ const FlightBooker = () => {
             name="flightStart"
             onChange={handleDateChange}
             style={{ backgroundColor: disableBooking && "#EE4C73" }}
-          ></Input>
+          />
           <br />
           <Input
             disabled={flightType === "oneWay" && true}
@@ -73,9 +73,9 @@ const FlightBooker = () => {
             name="flightEnd"
             onChange={handleDateChange}
             style={{ backgroundColor: disableBooking && "#EE4C73" }}
-          ></Input>
+          />
         </form>
-        <Button onClick={handleBooking} disabled={disableBooking} text={"BOOK"} />
+        <Button onClick={handleBooking} disabled={disableBooking} text="BOOK" />
       </div>
     </BoxLayout>
   );

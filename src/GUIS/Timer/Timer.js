@@ -73,11 +73,11 @@ const Timer = () => {
             onChange={(e) => {
               handleDurationChange(e);
             }}
-          ></Input>
+          />
         </div>
         <p>{duration}</p>
-        <br></br>
-        <Button onClick={handleReset} text={"RESET TIMER"} />
+        <br />
+        <Button onClick={handleReset} text="RESET TIMER" />
       </div>
     </BoxLayout>
   );

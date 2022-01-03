@@ -4,7 +4,6 @@ import "./Input.css";
 const Input = ({
   type,
   onChange,
-  children,
   value,
   id,
   name,
@@ -25,9 +24,7 @@ const Input = ({
       max={max}
       style={style}
       disabled={disabled}
-    >
-      {children}
-    </input>
+    />
   );
 };
 

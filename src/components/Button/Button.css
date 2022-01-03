@@ -1,4 +1,4 @@
-button {
+.btn {
   background-color: var(--gray1);
   height: 30px;
   /* //width: 110px; */
@@ -10,12 +10,12 @@ button {
   padding-right: 12px;
 }
 
-button:hover {
+.btn:hover {
   background-color: var(--pink);
   color: var(--primary-color);
   cursor: pointer;
 }
 
-button:disabled {
+.btn:disabled {
   opacity: 0.33;
 }

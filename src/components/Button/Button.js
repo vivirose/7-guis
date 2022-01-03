@@ -6,6 +6,7 @@ const Button = ({onClick, disabled, text}) => {
         <button
             onClick={onClick}
             disabled={disabled}
+            className="btn"
         >
             {text}
         </button>

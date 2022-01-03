@@ -25,7 +25,7 @@ const TempConverter = () => {
             id="celsius"
             value={celsius}
             onChange={(e) => toFahrenheit(e.target.value)}
-          ></Input>
+          />
           Celsius =
         </label>
         <label htmlFor="fahrenheit">
@@ -34,7 +34,7 @@ const TempConverter = () => {
             id="fahrenheit"
             value={fahrenheit}
             onChange={(e) => toCelsius(e.target.value)}
-          ></Input>
+          />
           Fahrenheit
         </label>
       </form>
